@@ -1,0 +1,39 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="28" fill="#FBF9F4"/>
+  <rect x="48" y="64" width="864" height="1" fill="#E4DDD3"/>
+  <text x="48" y="44" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="14" letter-spacing="2">MONITOREO CONTINUO</text>
+  <text x="48" y="96" fill="#1D1A16" font-family="Fraunces, Times New Roman, serif" font-size="28">Ciclo de observación y contención</text>
+
+  <g font-family="IBM Plex Sans, Arial, sans-serif" font-size="13" fill="#1D1A16">
+    <rect x="96" y="160" width="200" height="68" rx="14" fill="#F2EEE7" stroke="#D9D0C5"/>
+    <text x="118" y="196">Señales internas</text>
+
+    <rect x="380" y="160" width="200" height="68" rx="14" fill="#F2EEE7" stroke="#D9D0C5"/>
+    <text x="402" y="196">Detección y score</text>
+
+    <rect x="664" y="160" width="200" height="68" rx="14" fill="#F2EEE7" stroke="#D9D0C5"/>
+    <text x="688" y="196">Compuerta activa</text>
+
+    <rect x="380" y="300" width="200" height="68" rx="14" fill="#F2EEE7" stroke="#D9D0C5"/>
+    <text x="410" y="336">Revisión humana</text>
+  </g>
+
+  <g stroke="#2D4B3A" stroke-width="2" fill="none">
+    <line x1="296" y1="194" x2="380" y2="194"/>
+    <line x1="580" y1="194" x2="664" y2="194"/>
+    <line x1="764" y1="228" x2="764" y2="300"/>
+    <line x1="480" y1="368" x2="480" y2="420"/>
+    <path d="M480 420 C480 460 360 460 250 420"/>
+    <line x1="250" y1="420" x2="196" y2="420"/>
+  </g>
+
+  <circle cx="296" cy="194" r="4" fill="#2D4B3A"/>
+  <circle cx="580" cy="194" r="4" fill="#2D4B3A"/>
+  <circle cx="764" cy="228" r="4" fill="#2D4B3A"/>
+  <circle cx="480" cy="368" r="4" fill="#2D4B3A"/>
+  <circle cx="196" cy="420" r="4" fill="#2D4B3A"/>
+
+  <text x="48" y="500" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">
+    La observación continua integra señales internas, scoring y contención con escalamiento humano.
+  </text>
+</svg>

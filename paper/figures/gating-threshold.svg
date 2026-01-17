@@ -1,0 +1,30 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="28" fill="#FBF9F4"/>
+  <rect x="48" y="64" width="864" height="1" fill="#E4DDD3"/>
+  <text x="48" y="44" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="14" letter-spacing="2">INTERDICCION</text>
+  <text x="48" y="96" fill="#1D1A16" font-family="Fraunces, Times New Roman, serif" font-size="28">Umbral de riesgo y respuesta</text>
+
+  <g stroke="#D9D0C5" stroke-width="2">
+    <line x1="120" y1="440" x2="840" y2="440"/>
+    <line x1="120" y1="160" x2="120" y2="440"/>
+  </g>
+
+  <g stroke="#2D4B3A" stroke-width="3">
+    <path d="M120 420 C240 380 300 320 360 300 C420 280 500 260 560 240 C640 210 720 210 840 190"/>
+  </g>
+
+  <g stroke="#9B3D3D" stroke-width="3" stroke-dasharray="8 8">
+    <line x1="120" y1="260" x2="840" y2="260"/>
+  </g>
+
+  <circle cx="640" cy="228" r="8" fill="#9B3D3D"/>
+  <circle cx="720" cy="214" r="8" fill="#9B3D3D"/>
+
+  <text x="150" y="244" fill="#9B3D3D" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Umbral de interdicción</text>
+  <text x="120" y="470" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Tiempo operativo</text>
+  <text x="54" y="190" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" transform="rotate(-90 54 190)">Señal de riesgo</text>
+
+  <text x="48" y="500" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">
+    La compuerta activa se dispara cuando la señal interna supera un umbral conservador.
+  </text>
+</svg>
