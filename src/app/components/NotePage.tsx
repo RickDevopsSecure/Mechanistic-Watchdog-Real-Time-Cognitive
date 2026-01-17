@@ -28,7 +28,7 @@ export default async function NotePage({ lang }: NotePageProps) {
   const readingMinutes = Math.max(6, Math.round(wordCount / 180));
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const figureSuffix = lang === "en" ? "-en" : "";
-  const figureQuery = lang === "en" ? "?lang=en" : "";
+  const figureQuery = lang === "en" ? "?lang=en&v=2" : "?v=2";
   const t = lang === "en"
     ? {
         caption: "Internal research notes archive",
