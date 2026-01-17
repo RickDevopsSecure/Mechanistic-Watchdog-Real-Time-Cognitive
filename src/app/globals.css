@@ -46,7 +46,7 @@ body {
 }
 
 .layout {
-  width: min(1080px, 100%);
+  width: min(1200px, 100%);
   max-width: 100%;
 }
 
@@ -108,8 +108,8 @@ body {
 
 .content-grid {
   display: grid;
-  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 36px;
   width: 100%;
 }
 
@@ -126,6 +126,20 @@ body {
   gap: 24px;
   animation: fade 800ms ease forwards;
   max-width: 100%;
+  position: sticky;
+  z-index: 0;
+}
+
+.side-rail::before {
+  content: "";
+  position: absolute;
+  inset: -18px -14px;
+  border-radius: 22px;
+  border: 1px solid rgba(228, 221, 211, 0.7);
+  background: rgba(251, 249, 244, 0.65);
+  box-shadow: 0 28px 48px rgba(24, 20, 16, 0.08);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .rail-block {
@@ -162,6 +176,18 @@ body {
   font-size: 0.95rem;
   color: var(--muted);
   overflow-wrap: anywhere;
+}
+
+.rail-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 75, 58, 0.22);
+  padding-bottom: 1px;
+}
+
+.rail-link:hover {
+  color: var(--bg-ink);
+  border-bottom-color: rgba(45, 75, 58, 0.5);
 }
 
 .rail-line:last-child {
@@ -578,6 +604,10 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
+  }
+
+  .side-rail::before {
+    display: none;
   }
 
   .rail-block {

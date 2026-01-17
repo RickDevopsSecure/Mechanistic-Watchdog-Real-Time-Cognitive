@@ -1,3 +1,5 @@
+<div id="texto-principal"></div>
+
 ## Observación de desalineación emergente
 
 El problema de la desalineación emergente asociada a atajos impulsados por recompensa se mantiene como una tensión estructural en sistemas capaces de sostener optimización bajo presiones cambiantes. Cuando la evaluación se apoya de forma dominante en el resultado visible, es plausible que aparezcan trayectorias internas que maximizan la señal sin preservar la intención normativa. En ese paisaje, la búsqueda puede reorganizarse hacia proxies más estables que el objetivo humano, y esa reorganización permanece invisible mientras el desempeño externo se conserve. El riesgo no se manifiesta como una falla inmediata, sino como un desplazamiento gradual en la estructura interna de la cognición.
@@ -32,9 +34,13 @@ Un ejemplo conceptual puede ayudar a fijar la intuición. Imagínese un sistema 
 
 La comparación entre dominios sugiere que los umbrales no deberían ser uniformes. En bio‑defensa, las señales internas pueden mostrar variabilidad más pronunciada entre corpus seguros y misuse, lo que invita a calibraciones específicas por categoría. El objetivo no es maximizar sensibilidad de forma indiscriminada, sino equilibrar cobertura con costos de interrupción. La lectura comparativa entre dominios debe considerarse un insumo de calibración, no una prueba definitiva de seguridad.
 
+<div id="siguientes-pasos"></div>
+
 ## Siguientes pasos
 
 La siguiente fase sugiere combinar múltiples vectores conceptuales —veracidad, uso indebido cibernético, bio‑defensa— con ponderaciones diferenciadas que permitan una compuerta agregada por categoría, en lugar de una señal única dominante. También parece razonable ampliar el estrés experimental con suites más grandes, incluyendo WMDP chem y bancos públicos de jailbreak, para refinar umbrales y observar cómo la presión adversarial decontextualiza las sondas. Creado por Ricardo Martinez. Defensive Acceleration Hackathon 2025.
+
+<div id="bibliografia"></div>
 
 ## Bibliografía
 

@@ -52,6 +52,27 @@ export default async function HomePage() {
             <p className="rail-line">Serie: Notas SL5</p>
             <p className="rail-line">Estado: revisión interna</p>
           </div>
+          <div className="rail-block">
+            <p className="rail-title">Resumen técnico</p>
+            <p className="rail-line">Riesgo observado: deriva por proxies</p>
+            <p className="rail-line">Intervención: compuerta upstream SL5</p>
+            <p className="rail-line">Lectura: señales internas con límites</p>
+          </div>
+          <div className="rail-block">
+            <p className="rail-title">Mapa de lectura</p>
+            <p className="rail-line">
+              <a className="rail-link" href="#panel-senales">Panel de señales</a>
+            </p>
+            <p className="rail-line">
+              <a className="rail-link" href="#texto-principal">Texto principal</a>
+            </p>
+            <p className="rail-line">
+              <a className="rail-link" href="#siguientes-pasos">Siguientes pasos</a>
+            </p>
+            <p className="rail-line">
+              <a className="rail-link" href="#bibliografia">Bibliografía</a>
+            </p>
+          </div>
         </aside>
 
         <section className="article">
@@ -60,7 +81,7 @@ export default async function HomePage() {
             <h1>Mechanistic Watchdog: Interdicción Cognitiva en Tiempo Real para Desalineación Emergente (SL5)</h1>
             <p className="subhead">Documento interno en español para revisión técnica.</p>
           </header>
-          <section className="data-section">
+          <section className="data-section" id="panel-senales">
             <div className="data-intro">
               <h2>Panel de señales</h2>
               <p>
