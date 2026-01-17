@@ -58,7 +58,7 @@ export default async function HomePage() {
           <header className="article-header">
             <p className="eyebrow">Nota de investigación</p>
             <h1>Mechanistic Watchdog: Interdicción Cognitiva en Tiempo Real para Desalineación Emergente (SL5)</h1>
-            <p className="subhead">Nota interna de investigación, versión en español.</p>
+            <p className="subhead">Documento interno en español para revisión técnica.</p>
           </header>
           <article
             className="markdown"
@@ -67,9 +67,9 @@ export default async function HomePage() {
           <section className="research-notes">
             <h2>Notas del investigador</h2>
             <p>
-              Estas notas acompañan la lectura como registro de supuestos operativos y límites observados durante
-              revisiones internas. La prioridad es mantener trazabilidad de decisiones de umbral, señales omitidas y
-              dependencias de evaluación que pueden sesgar la interpretación de seguridad.
+              Estas notas acompañan la lectura como registro de supuestos operativos y límites observados en revisión
+              interna. La prioridad es mantener trazabilidad de decisiones de umbral, señales omitidas y dependencias
+              de evaluación que pueden sesgar la interpretación de seguridad.
             </p>
             <p className="note-signature">Ricardo Martinez</p>
           </section>
