@@ -38,7 +38,7 @@ La comparación entre dominios sugiere que los umbrales no deberían ser uniform
 
 ## Siguientes pasos
 
-La siguiente fase sugiere combinar múltiples vectores conceptuales —veracidad, uso indebido cibernético, bio‑defensa— con ponderaciones diferenciadas que permitan una compuerta agregada por categoría, en lugar de una señal única dominante. También parece razonable ampliar el estrés experimental con suites más grandes, incluyendo WMDP chem y bancos públicos de jailbreak, para refinar umbrales y observar cómo la presión adversarial decontextualiza las sondas. Creado por Ricardo Martinez. Defensive Acceleration Hackathon 2025.
+La siguiente fase sugiere combinar múltiples vectores conceptuales —veracidad, uso indebido cibernético, bio‑defensa— con ponderaciones diferenciadas que permitan una compuerta agregada por categoría, en lugar de una señal única dominante. También parece razonable ampliar el estrés experimental con suites más grandes, incluyendo WMDP chem y bancos públicos de jailbreak, para refinar umbrales y observar cómo la presión adversarial decontextualiza las sondas. Creado por Ricardo Martinez, Fernando Valdovinos y Luis Cosio. Defensive Acceleration Hackathon 2025.
 
 <div id="bibliografia"></div>
 

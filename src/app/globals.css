@@ -106,6 +106,31 @@ body {
   margin: 0 0 6px;
 }
 
+.site-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.lang-toggle {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: rgba(251, 249, 244, 0.9);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.lang-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(45, 75, 58, 0.35);
+  box-shadow: 0 10px 18px rgba(24, 20, 16, 0.12);
+}
+
 .content-grid {
   display: grid;
   grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
@@ -623,6 +648,10 @@ h1 {
 
   .site-meta {
     text-align: left;
+  }
+
+  .site-actions {
+    align-items: flex-start;
   }
 
   .figure-grid {
