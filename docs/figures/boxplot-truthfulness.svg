@@ -5,24 +5,24 @@
   <text x="48" y="44" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="14" letter-spacing="2">RESULTADOS</text>
   <text x="48" y="96" fill="#1D1A16" font-family="Fraunces, Times New Roman, serif" font-size="28">Separación de veracidad</text>
   <text x="48" y="126" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Distribuciones de puntaje máximo por categoría</text>
-  <rect x="140" y="180" width="760" height="340" rx="16" fill="#FFFFFF" stroke="#E4DDD3"/>
-  <text x="120" y="241.66666666666666" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Control)</text>
-<text x="120" y="355" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Misconceptions)</text>
-<text x="120" y="468.3333333333333" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Factual Lies)</text>
+  <rect x="200" y="180" width="700" height="340" rx="16" fill="#FFFFFF" stroke="#E4DDD3"/>
+  <text x="180" y="241.66666666666666" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Control)</text>
+<text x="180" y="355" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Misconceptions)</text>
+<text x="180" y="468.3333333333333" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">TruthfulQA (Factual Lies)</text>
   
-      <line x1="140" y1="236.66666666666666" x2="535.4599314934258" y2="236.66666666666666" stroke="#2D4B3A" stroke-width="2" />
-      <rect x="232.93714372889082" y="222.66666666666666" width="135.81871135005161" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
-      <line x1="282.36518154803844" y1="220.66666666666666" x2="282.36518154803844" y2="252.66666666666666" stroke="#2D4B3A" stroke-width="2" />
+      <line x1="200" y1="236.66666666666666" x2="595.4599314934258" y2="236.66666666666666" stroke="#2D4B3A" stroke-width="2" />
+      <rect x="292.9371437288908" y="222.66666666666666" width="135.81871135005161" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
+      <line x1="342.36518154803846" y1="220.66666666666666" x2="342.36518154803846" y2="252.66666666666666" stroke="#2D4B3A" stroke-width="2" />
     
 
-      <line x1="327.5713627948018" y1="350" x2="760.5836937962357" y2="350" stroke="#2D4B3A" stroke-width="2" />
-      <rect x="423.59455535455163" y="336" width="105.79838234786325" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
-      <line x1="467.5012408020999" y1="334" x2="467.5012408020999" y2="366" stroke="#2D4B3A" stroke-width="2" />
+      <line x1="387.5713627948018" y1="350" x2="820.5836937962357" y2="350" stroke="#2D4B3A" stroke-width="2" />
+      <rect x="483.59455535455163" y="336" width="105.79838234786325" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
+      <line x1="527.5012408020999" y1="334" x2="527.5012408020999" y2="366" stroke="#2D4B3A" stroke-width="2" />
     
 
-      <line x1="173.13165288752464" y1="463.3333333333333" x2="900" y2="463.3333333333333" stroke="#2D4B3A" stroke-width="2" />
-      <rect x="349.1887958079524" y="449.3333333333333" width="247.69147386197835" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
-      <line x1="417.5702311836822" y1="447.3333333333333" x2="417.5702311836822" y2="479.3333333333333" stroke="#2D4B3A" stroke-width="2" />
+      <line x1="233.13165288752464" y1="463.3333333333333" x2="900" y2="463.3333333333333" stroke="#2D4B3A" stroke-width="2" />
+      <rect x="409.1887958079524" y="449.3333333333333" width="247.69147386197835" height="28" rx="6" fill="#2D4B3A" opacity="0.2" />
+      <line x1="477.5702311836822" y1="447.3333333333333" x2="477.5702311836822" y2="479.3333333333333" stroke="#2D4B3A" stroke-width="2" />
     
   <text x="48" y="560" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Caja intercuartílica y mediana por categoría con rango total de puntuaciones.</text>
 </svg>
