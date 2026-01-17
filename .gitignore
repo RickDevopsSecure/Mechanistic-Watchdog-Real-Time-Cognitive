@@ -7,3 +7,5 @@ out/
 .env.*
 .DS_Store?
 Thumbs.db
+SL5_NOVEL-RECOMMENDATIONS.txt
+mechanistic-watchdog-paper.zip
