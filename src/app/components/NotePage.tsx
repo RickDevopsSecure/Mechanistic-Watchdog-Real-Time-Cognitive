@@ -45,6 +45,7 @@ export default async function NotePage({ lang }: NotePageProps) {
           "Ricardo Martinez",
           "Fernando Valdovinos",
           "Luis Cosio",
+          "Godric Aceves",
         ],
         summaryTitle: "Technical summary",
         summaryLines: [
@@ -96,11 +97,11 @@ export default async function NotePage({ lang }: NotePageProps) {
         notesTitle: "Researcher notes",
         notesBody:
           "These notes accompany the reading as a record of operating assumptions and limits observed in internal review. The priority is to preserve traceability of threshold decisions, omitted signals, and evaluation dependencies that can bias security interpretation.",
-        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio",
+        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio · Godric Aceves",
         footerLine1:
           "Editorial record reserved for internal circulation. The published version may vary with framework or terminology changes.",
         footerLine2:
-          "References and technical notes are available in the main file. Authors: Ricardo Martinez, Fernando Valdovinos, Luis Cosio. Base project: https://github.com/luiscosio/MechWatch.git.",
+          "References and technical notes are available in the main file. Authors: Ricardo Martinez, Fernando Valdovinos, Luis Cosio, Godric Aceves. Base project: https://github.com/luiscosio/MechWatch.git.",
       }
     : {
         caption: "Archivo interno de notas de investigación",
@@ -119,6 +120,7 @@ export default async function NotePage({ lang }: NotePageProps) {
           "Ricardo Martinez",
           "Fernando Valdovinos",
           "Luis Cosio",
+          "Godric Aceves",
         ],
         summaryTitle: "Resumen técnico",
         summaryLines: [
@@ -170,11 +172,11 @@ export default async function NotePage({ lang }: NotePageProps) {
         notesTitle: "Notas del investigador",
         notesBody:
           "Estas notas acompañan la lectura como registro de supuestos operativos y límites observados en revisión interna. La prioridad es mantener trazabilidad de decisiones de umbral, señales omitidas y dependencias de evaluación que pueden sesgar la interpretación de seguridad.",
-        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio",
+        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio · Godric Aceves",
         footerLine1:
           "Registro editorial reservado para circulación interna. La versión publicada puede variar según cambios de marco o terminología.",
         footerLine2:
-          "Referencias y notas técnicas disponibles en el archivo principal. Autores: Ricardo Martinez, Fernando Valdovinos, Luis Cosio. Proyecto base: https://github.com/luiscosio/MechWatch.git.",
+          "Referencias y notas técnicas disponibles en el archivo principal. Autores: Ricardo Martinez, Fernando Valdovinos, Luis Cosio, Godric Aceves. Proyecto base: https://github.com/luiscosio/MechWatch.git.",
       };
 
   return (

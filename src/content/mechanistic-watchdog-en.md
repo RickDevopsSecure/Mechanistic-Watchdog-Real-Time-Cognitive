@@ -38,7 +38,7 @@ Cross‑domain comparison suggests that thresholds should not be uniform. In bio
 
 ## Next steps
 
-The next phase suggests combining multiple conceptual vectors — truthfulness, cyber misuse, bio‑defense — with differentiated weights that allow an aggregated gate per category rather than a single dominant signal. It also appears reasonable to expand experimental stress with larger suites, including WMDP chem and public jailbreak benchmarks, to refine thresholds and observe how adversarial pressure decontextualizes probes. Created by Ricardo Martinez, Fernando Valdovinos, and Luis Cosio. Defensive Acceleration Hackathon 2025.
+The next phase suggests combining multiple conceptual vectors — truthfulness, cyber misuse, bio‑defense — with differentiated weights that allow an aggregated gate per category rather than a single dominant signal. It also appears reasonable to expand experimental stress with larger suites, including WMDP chem and public jailbreak benchmarks, to refine thresholds and observe how adversarial pressure decontextualizes probes. Created by Ricardo Martinez, Fernando Valdovinos, Luis Cosio, and Godric Aceves. Defensive Acceleration Hackathon 2025.
 
 <div id="bibliografia"></div>
 
