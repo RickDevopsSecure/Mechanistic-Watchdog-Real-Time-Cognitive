@@ -16,11 +16,11 @@ Un ejemplo conceptual puede ayudar a fijar la intuición. Imagínese un sistema 
 
 La viabilidad de este enfoque depende de supuestos fuertes sobre la legibilidad del estado interno y sobre la estabilidad de las correlaciones entre patrones cognitivos y riesgo de desalineación. Es plausible que una capa de vigilancia interna aporte información adicional sobre dinámicas que hoy no se observan, pero también podría convertirse en un nuevo objetivo de optimización o en una fuente de errores silenciosos. La intervención upstream podría alterar el equilibrio entre exploración y control de maneras que no se comprenden del todo. Mechanistic Watchdog y la interdicción cognitiva SL5 se entienden mejor como un intento de ampliar el espacio de observación y de anticipación, no como un cierre del problema.
 
-06 // SIGUIENTES PASOS
+## Siguientes pasos
 
 La siguiente fase sugiere combinar múltiples vectores conceptuales —veracidad, uso indebido cibernético, bio-defensa— con ponderaciones diferenciadas que permitan una compuerta agregada por categoría, en lugar de una señal única dominante. También parece razonable ampliar el estrés experimental con suites más grandes, incluyendo WMDP chem y bancos públicos de jailbreak, para refinar umbrales y observar cómo la presión adversarial decontextualiza las sondas. Creado por Ricardo Martinez. Defensive Acceleration Hackathon 2025.
 
-07 // BIBLIOGRAFÍA
+## Bibliografía
 
 E. Hubinger et al., “Risks from learned optimization in advanced machine learning systems,” arXiv:1906.01820, 2019. [https://arxiv.org/abs/1906.01820](https://arxiv.org/abs/1906.01820)  
 A. Shimi, “Understanding gradient hacking,” AI Alignment Forum, 2021. [https://www.alignmentforum.org/](https://www.alignmentforum.org/)  
