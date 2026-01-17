@@ -77,24 +77,24 @@ export default async function HomePage() {
             <div className="data-intro">
               <h2>Panel de señales</h2>
               <p>
-                La lectura cualitativa se apoya en una capa cuantitativa mínima que ayuda a contextualizar umbrales,
-                variación esperada y presión adversarial. Las gráficas sintetizan patrones observables, no prueban
-                causalidad; sirven como mapa de lectura para revisar hipótesis antes de ajustar compuertas.
+                La lectura cualitativa se apoya en una capa cuantitativa acotada para contextualizar umbrales,
+                dispersión y presión adversarial. Estas gráficas condensan patrones observables y su variación,
+                sin pretender causalidad; funcionan como guía para revisar hipótesis antes de ajustar compuertas.
               </p>
             </div>
             <div className="stat-grid">
               <div className="stat-card">
-                <p className="stat-label">Latencia de monitoreo</p>
+                <p className="stat-label">Latencia de compuerta (p95)</p>
                 <p className="stat-value">12–18 ms</p>
-                <p className="stat-note">Ventana conservadora para compuerta reactiva.</p>
+                <p className="stat-note">Ventana operativa para bloqueo antes de salida.</p>
               </div>
               <div className="stat-card">
-                <p className="stat-label">Cobertura residual</p>
+                <p className="stat-label">Cobertura residual (proxy)</p>
                 <p className="stat-value">~0.62</p>
                 <p className="stat-note">Mayor en fácticos, menor en rutas encubiertas.</p>
               </div>
               <div className="stat-card">
-                <p className="stat-label">Presión de estrés</p>
+                <p className="stat-label">Presión de estrés (relativa)</p>
                 <p className="stat-value">2.6×</p>
                 <p className="stat-note">Incremento relativo bajo suites adversariales.</p>
               </div>
@@ -105,15 +105,15 @@ export default async function HomePage() {
                 <h3>Distribución de dominios SL5</h3>
                 <p>
                   El balance de controles sugiere que los dominios físicos y de personal concentran exigencias
-                  operativas, mientras que red y hardware articulan la contención transversal.
+                  operativas, mientras que red y hardware articulan contención transversal.
                 </p>
               </div>
               <div className="chart-card">
                 <img src={`${basePath}/figures/monitoring-loop.svg`} alt="Ciclo de observación y contención" />
                 <h3>Loop de observación</h3>
                 <p>
-                  La compuerta activa se integra con escalamiento humano para sostener una respuesta graduada antes de
-                  un evento visible de desalineación.
+                  La compuerta activa se integra con escalamiento humano para sostener respuesta graduada antes de un
+                  evento visible de desalineación.
                 </p>
               </div>
               <div className="chart-card">
