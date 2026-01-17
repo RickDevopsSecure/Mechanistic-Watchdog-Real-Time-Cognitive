@@ -27,6 +27,7 @@ export default async function NotePage({ lang }: NotePageProps) {
   const wordCount = countWords(markdown);
   const readingMinutes = Math.max(6, Math.round(wordCount / 180));
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const figureSuffix = lang === "en" ? "-en" : "";
   const t = lang === "en"
     ? {
         caption: "Internal research notes archive",
@@ -271,42 +272,42 @@ export default async function NotePage({ lang }: NotePageProps) {
             </div>
             <div className="chart-grid">
               <div className="chart-card">
-                <img src={`${basePath}/figures/sl5-domains.svg`} alt={t.chart1Title} />
+                <img src={`${basePath}/figures/sl5-domains${figureSuffix}.svg`} alt={t.chart1Title} />
                 <h3>{t.chart1Title}</h3>
                 <p>{t.chart1Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/monitoring-loop.svg`} alt={t.chart2Title} />
+                <img src={`${basePath}/figures/monitoring-loop${figureSuffix}.svg`} alt={t.chart2Title} />
                 <h3>{t.chart2Title}</h3>
                 <p>{t.chart2Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/gating-threshold.svg`} alt={t.chart3Title} />
+                <img src={`${basePath}/figures/gating-threshold${figureSuffix}.svg`} alt={t.chart3Title} />
                 <h3>{t.chart3Title}</h3>
                 <p>{t.chart3Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/residual-coverage.svg`} alt={t.chart4Title} />
+                <img src={`${basePath}/figures/residual-coverage${figureSuffix}.svg`} alt={t.chart4Title} />
                 <h3>{t.chart4Title}</h3>
                 <p>{t.chart4Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/vector-gating.svg`} alt={t.chart5Title} />
+                <img src={`${basePath}/figures/vector-gating${figureSuffix}.svg`} alt={t.chart5Title} />
                 <h3>{t.chart5Title}</h3>
                 <p>{t.chart5Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/eval-suite-pressure.svg`} alt={t.chart6Title} />
+                <img src={`${basePath}/figures/eval-suite-pressure${figureSuffix}.svg`} alt={t.chart6Title} />
                 <h3>{t.chart6Title}</h3>
                 <p>{t.chart6Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/boxplot-truthfulness.svg`} alt={t.chart7Title} />
+                <img src={`${basePath}/figures/boxplot-truthfulness${figureSuffix}.svg`} alt={t.chart7Title} />
                 <h3>{t.chart7Title}</h3>
                 <p>{t.chart7Body}</p>
               </div>
               <div className="chart-card">
-                <img src={`${basePath}/figures/boxplot-bio.svg`} alt={t.chart8Title} />
+                <img src={`${basePath}/figures/boxplot-bio${figureSuffix}.svg`} alt={t.chart8Title} />
                 <h3>{t.chart8Title}</h3>
                 <p>{t.chart8Body}</p>
               </div>
