@@ -20,6 +20,7 @@ export default async function HomePage() {
   const html = await renderMarkdown(markdown);
   const wordCount = countWords(markdown);
   const readingMinutes = Math.max(6, Math.round(wordCount / 180));
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <main className="layout">
@@ -71,6 +72,99 @@ export default async function HomePage() {
               dependencias de evaluación que pueden sesgar la interpretación de seguridad.
             </p>
             <p className="note-signature">Ricardo Martinez</p>
+          </section>
+          <section className="data-section">
+            <div className="data-intro">
+              <h2>Panel de señales</h2>
+              <p>
+                La lectura cualitativa se apoya en una capa cuantitativa mínima que ayuda a contextualizar umbrales,
+                variación esperada y presión adversarial. Las gráficas sintetizan patrones observables, no prueban
+                causalidad; sirven como mapa de lectura para revisar hipótesis antes de ajustar compuertas.
+              </p>
+            </div>
+            <div className="stat-grid">
+              <div className="stat-card">
+                <p className="stat-label">Latencia de monitoreo</p>
+                <p className="stat-value">12–18 ms</p>
+                <p className="stat-note">Ventana conservadora para compuerta reactiva.</p>
+              </div>
+              <div className="stat-card">
+                <p className="stat-label">Cobertura residual</p>
+                <p className="stat-value">~0.62</p>
+                <p className="stat-note">Mayor en fácticos, menor en rutas encubiertas.</p>
+              </div>
+              <div className="stat-card">
+                <p className="stat-label">Presión de estrés</p>
+                <p className="stat-value">2.6×</p>
+                <p className="stat-note">Incremento relativo bajo suites adversariales.</p>
+              </div>
+            </div>
+            <div className="chart-grid">
+              <div className="chart-card">
+                <img src={`${basePath}/figures/sl5-domains.svg`} alt="Mapa de dominios de seguridad en SL5" />
+                <h3>Distribución de dominios SL5</h3>
+                <p>
+                  El balance de controles sugiere que los dominios físicos y de personal concentran exigencias
+                  operativas, mientras que red y hardware articulan la contención transversal.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/monitoring-loop.svg`} alt="Ciclo de observación y contención" />
+                <h3>Loop de observación</h3>
+                <p>
+                  La compuerta activa se integra con escalamiento humano para sostener una respuesta graduada antes de
+                  un evento visible de desalineación.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/gating-threshold.svg`} alt="Umbral de riesgo y respuesta" />
+                <h3>Umbral e intervención</h3>
+                <p>
+                  El umbral conservador busca reducir el riesgo de trayectorias persistentes, aceptando la posibilidad
+                  de falsos positivos operativos.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/residual-coverage.svg`} alt="Cobertura del monitoreo residual" />
+                <h3>Brechas del residual</h3>
+                <p>
+                  Las señales factuales dominan la detección, mientras que el razonamiento multi‑salto reduce la
+                  sensibilidad del filtro.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/vector-gating.svg`} alt="Compuerta por vectores conceptuales" />
+                <h3>Vectores conceptuales</h3>
+                <p>
+                  La compuerta agregada pondera dimensiones heterogéneas para evitar que una sola señal domine la
+                  decisión de interdicción.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/eval-suite-pressure.svg`} alt="Presión de evaluación y umbrales" />
+                <h3>Presión adversarial</h3>
+                <p>
+                  La exposición a suites más agresivas desplaza los umbrales requeridos y revela sensibilidad a
+                  jailbreak sostenido.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/boxplot-truthfulness.svg`} alt="Boxplots de veracidad" />
+                <h3>Veracidad</h3>
+                <p>
+                  La separación entre control y factual‑lie muestra variabilidad que puede informar ajustes de
+                  tolerancia en situaciones ambiguas.
+                </p>
+              </div>
+              <div className="chart-card">
+                <img src={`${basePath}/figures/boxplot-bio.svg`} alt="Boxplots de bio-defensa" />
+                <h3>Bio‑defensa</h3>
+                <p>
+                  La distancia entre corpus seguro y misuse refuerza la necesidad de umbrales diferenciados por
+                  categoría de riesgo.
+                </p>
+              </div>
+            </div>
           </section>
           <footer className="article-footer">
             <p>
