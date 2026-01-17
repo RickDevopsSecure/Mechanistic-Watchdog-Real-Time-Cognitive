@@ -1,0 +1,33 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="28" fill="#FBF9F4"/>
+  <rect x="48" y="64" width="864" height="1" fill="#E4DDD3"/>
+  <text x="48" y="44" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="14" letter-spacing="2">EVALUACION</text>
+  <text x="48" y="96" fill="#1D1A16" font-family="Fraunces, Times New Roman, serif" font-size="28">Presión de evaluación y umbrales</text>
+
+  <g stroke="#D9D0C5" stroke-width="2">
+    <line x1="120" y1="440" x2="840" y2="440"/>
+    <line x1="120" y1="160" x2="120" y2="440"/>
+  </g>
+
+  <g font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#6B6258">
+    <text x="130" y="462">Base</text>
+    <text x="300" y="462">WMDP chem</text>
+    <text x="500" y="462">Jailbreaks</text>
+    <text x="680" y="462">Suite ampliada</text>
+  </g>
+
+  <g fill="#2D4B3A">
+    <circle cx="150" cy="380" r="6"/>
+    <circle cx="330" cy="330" r="6"/>
+    <circle cx="520" cy="270" r="6"/>
+    <circle cx="710" cy="230" r="6"/>
+  </g>
+
+  <g stroke="#2D4B3A" stroke-width="3">
+    <path d="M150 380 C240 350 300 340 330 330 C420 300 470 290 520 270 C600 250 660 240 710 230"/>
+  </g>
+
+  <text x="48" y="500" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">
+    La presión de evaluación incrementa la sensibilidad requerida de los umbrales de detección.
+  </text>
+</svg>
