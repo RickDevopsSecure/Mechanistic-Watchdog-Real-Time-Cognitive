@@ -385,6 +385,7 @@ h1 {
     position: static;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 16px;
   }
 
   .rail-block {
@@ -394,6 +395,7 @@ h1 {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 
   .site-meta {
@@ -407,15 +409,54 @@ h1 {
 
 @media (max-width: 640px) {
   .page {
-    padding: 48px 18px 80px;
+    padding: 36px 16px 64px;
   }
 
   .side-rail {
     flex-direction: column;
   }
 
+  .brand {
+    align-items: flex-start;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  .brand-label {
+    font-size: 0.95rem;
+  }
+
+  .brand-caption,
+  .site-meta,
+  .rail-line {
+    font-size: 0.85rem;
+  }
+
   h1 {
     font-size: 2rem;
+  }
+
+  .subhead {
+    font-size: 0.95rem;
+  }
+
+  .markdown {
+    font-size: 1rem;
+  }
+
+  .markdown p:first-of-type::first-letter {
+    font-size: 2.6rem;
+    line-height: 0.9;
+    margin-top: 4px;
+  }
+
+  .article-header {
+    padding-bottom: 22px;
   }
 
   .figure-card {
@@ -428,6 +469,10 @@ h1 {
 
   .figure-section h2 {
     font-size: 1.05rem;
+  }
+
+  .research-notes {
+    padding: 18px;
   }
 }
 

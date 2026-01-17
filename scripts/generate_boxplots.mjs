@@ -37,11 +37,11 @@ function groupByCategory(rows) {
 
 function renderBoxplotSvg(title, subtitle, groups) {
   const width = 960;
-  const height = 560;
+  const height = 620;
   const plotLeft = 140;
   const plotRight = 900;
-  const plotTop = 160;
-  const plotBottom = 460;
+  const plotTop = 180;
+  const plotBottom = 520;
   const rowHeight = (plotBottom - plotTop) / groups.length;
   const allValues = groups.flatMap(g => [g.stats.min, g.stats.max]);
   const globalMin = Math.min(...allValues);
@@ -65,7 +65,7 @@ function renderBoxplotSvg(title, subtitle, groups) {
 
   const labels = groups.map((g, i) => {
     const y = plotTop + rowHeight * (i + 0.5) + 5;
-    return `<text x="${plotLeft - 20}" y="${y}" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="13" fill="#1D1A16">${g.category}</text>`;
+    return `<text x="${plotLeft - 20}" y="${y}" text-anchor="end" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12" fill="#1D1A16">${g.category}</text>`;
   });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -74,11 +74,11 @@ function renderBoxplotSvg(title, subtitle, groups) {
   <rect x="48" y="64" width="864" height="1" fill="#E4DDD3"/>
   <text x="48" y="44" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="14" letter-spacing="2">RESULTADOS</text>
   <text x="48" y="96" fill="#1D1A16" font-family="Fraunces, Times New Roman, serif" font-size="28">${title}</text>
-  <text x="48" y="126" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="13">${subtitle}</text>
+  <text x="48" y="126" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">${subtitle}</text>
   <rect x="${plotLeft}" y="${plotTop}" width="${plotRight - plotLeft}" height="${plotBottom - plotTop}" rx="16" fill="#FFFFFF" stroke="#E4DDD3"/>
   ${labels.join("\n")}
   ${lines.join("\n")}
-  <text x="48" y="500" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Caja intercuartílica y mediana por categoría con rango total de puntuaciones.</text>
+  <text x="48" y="560" fill="#6B6258" font-family="IBM Plex Sans, Arial, sans-serif" font-size="12">Caja intercuartílica y mediana por categoría con rango total de puntuaciones.</text>
 </svg>`;
 }
 
