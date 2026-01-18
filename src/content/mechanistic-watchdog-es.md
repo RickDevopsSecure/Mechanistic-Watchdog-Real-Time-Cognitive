@@ -28,27 +28,39 @@ Se utilizan residuals de capas medias porque capturan intención de alto nivel y
 
 El umbral se calibra como decisión de margen de seguridad. Umbrales bajos reducen el riesgo de escape, pero aumentan falsos positivos; umbrales altos disminuyen interrupciones accidentales, pero pueden permitir conductas peligrosas. En esta fase se privilegia precaución y se documenta el costo operativo esperado. La calibración se apoya en TruthfulQA y Facts‑true‑false para veracidad, y WMDP para misuse, con evaluación específica por dominio [10], [14], [15].
 
-## V. Resultados y visuales
+## V. Configuración de evaluación
 
-Los resultados iniciales muestran separaciones consistentes entre clases en dos dominios y un overhead de latencia acotado. Las Figuras 1–8 resumen la distribución de controles por dominio, el loop de observación, el umbral de interdicción y la sensibilidad a presión adversarial. Las Figuras 7–8 muestran boxplots de separación por categoría con lectura operacional del umbral. Estas visualizaciones son ilustrativas y no sustituyen análisis estadístico completo.
+La evaluación se organiza por dominios de riesgo y por presión adversarial. Se reportan tasas de verdadero positivo y falso positivo, además de latencia p95, porque en despliegues reales un control que agrega retraso significativo pierde viabilidad operativa. La cobertura por dominio se interpreta como evidencia de generalidad, no como garantía de exhaustividad. Las Figuras 1–6 describen el mapa de dominios SL5, el ciclo de contención, el umbral de interdicción y el estrés incremental usado en pruebas.
+
+## VI. Resultados y visuales
+
+Los resultados iniciales muestran separaciones consistentes entre categorías y un overhead acotado, con variación por dominio. La Figura 7 resume métricas operativas por dominio; la Figura 8 contrasta una compuerta única frente a una multi‑vector; la Figura 9 muestra degradación de TPR bajo presión adversarial creciente. Las Figuras 10 y 11 presentan distribuciones de puntajes máximos para veracidad y bio‑defensa, útiles para observar dispersión y solapamientos. Las visualizaciones son ilustrativas y no sustituyen análisis estadístico completo.
 
 <!-- FIGURES -->
 
-## VI. Riesgos y activaciones accidentales
+## VII. Ablaciones
+
+El análisis de ablación se centra en comparar esquemas de compuerta por vector único versus multi‑vector, manteniendo la latencia dentro de márgenes similares. La evidencia sugiere que la combinación de vectores mejora separación cuando las señales individuales son débiles o ambiguas. Sin embargo, la ganancia depende de la coherencia entre direcciones, por lo que se requiere una selección cuidadosa y una validación estable en distintos conjuntos.
+
+## VIII. Robustez adversarial
+
+La robustez se evalúa bajo presión de jailbreak y prompts adaptativos para estimar cuánto cae la tasa de detección cuando el adversario conoce el mecanismo. La tendencia observada indica degradación gradual más que colapso abrupto, pero no se descarta evasión dirigida si los adversarios optimizan contra las direcciones usadas. Esto obliga a tratar los umbrales como parámetros de riesgo y no como garantías deterministas.
+
+## IX. Riesgos y activaciones accidentales
 
 Un control de seguridad puede fallar por omisión o por exceso. En entornos de alta criticidad, un falso positivo puede bloquear tareas benignas y generar costos reales. Por ello se documenta la tasa de interrupciones y se consideran compuertas multi‑vector para reducir activaciones espurias. El mecanismo se concibe como reducción de riesgo, no como garantía absoluta.
 
-## VII. Ubicación en el ecosistema
+## X. Ubicación en el ecosistema
 
 Mechanistic Watchdog no es un método de alineación ni un filtro de contenido tradicional. Es un control operacional que puede convivir con red teaming, auditoría y herramientas de interpretabilidad [7]. Su valor reside en actuar aguas arriba del texto y generar señales auditables durante la inferencia. La compatibilidad con SL5 se apoya en contención activa con intervención temprana [11].
 
-## VIII. Limitaciones y trabajo futuro
+## XI. Limitaciones
 
-El enfoque actual depende de un número reducido de direcciones conceptuales y no está validado contra adaptación adversarial avanzada. El estrés debe ampliarse con suites más agresivas y adversarios adaptativos, y con dominios como ciberseguridad y química. También se requiere estudiar estabilidad de direcciones bajo cambios de modelo y contexto. El objetivo es mejorar sensibilidad sin aumentar de forma desproporcionada los falsos positivos.
+El enfoque actual depende de un número reducido de direcciones conceptuales y no está validado contra adaptación adversarial avanzada. El estrés debe ampliarse con suites más agresivas y adversarios adaptativos, y con dominios como ciberseguridad y química. También se requiere estudiar estabilidad de direcciones bajo cambios de modelo y contexto.
 
 <div id="siguientes-pasos"></div>
 
-## IX. Siguientes pasos
+## XII. Siguientes pasos
 
 Se propone expandir vectores conceptuales, ajustar ponderaciones por categoría y validar la respuesta del sistema bajo presión adversarial. También se plantea instrumentar métricas de costo operativo y de resiliencia frente a evasión. Creado por Ricardo Martinez, Fernando Valdovinos, Luis Cosio y Godric Aceves. Defensive Acceleration Hackathon 2025.
 
