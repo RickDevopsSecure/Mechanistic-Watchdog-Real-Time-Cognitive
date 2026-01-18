@@ -1,50 +1,54 @@
 <div id="texto-principal"></div>
 
-## Resumen
+## Resumen—
 
-Mechanistic Watchdog es una capa de seguridad en tiempo real que monitorea activaciones internas de un modelo de lenguaje y puede interrumpir la generación antes de que emerja contenido dañino. El enfoque se apoya en señales internas interpretables y en una compuerta activa alineada con SL5 para reducir riesgos en despliegues de alta criticidad. Presentamos una formulación operativa, un esquema de calibración y resultados iniciales que motivan su uso como control preventivo, no como reemplazo de políticas o revisión humana.
+Mechanistic Watchdog es una capa de seguridad en tiempo real que monitorea activaciones internas de un modelo de lenguaje y puede interrumpir la generación antes de que emerja contenido dañino. El enfoque se apoya en señales internas interpretables y en una compuerta activa alineada con SL5 para reducir riesgo en despliegues de alta criticidad. Se presenta una formulación operativa, decisiones de calibración y resultados iniciales que motivan su uso como control preventivo, no como sustituto de política o revisión humana.
 
-## TL;DR
+## Términos clave—
 
-Proponemos un interruptor cognitivo que detecta señales internas de riesgo y detiene la generación con baja latencia. El objetivo es interceptar conductas de alto riesgo antes de que aparezcan en texto. Mostramos separaciones tempranas entre categorías y discutimos trade‑offs relevantes, en particular falsas activaciones y sensibilidad bajo presión adversarial.
+interdicción cognitiva; monitoreo interno; SL5; activaciones residuales; compuerta activa.
 
-## 1. Motivación y alcance
+## TL;DR—
 
-Los modelos actuales se despliegan en entornos donde una salida incorrecta puede impactar dinero, infraestructura o decisiones clínicas. El alineamiento basado en salida opera como filtro tardío y puede fallar ante estrategias encubiertas, fragmentación de información o presión adversarial sostenida. Un mecanismo que observe señales internas durante la inferencia puede reducir esa ventana de exposición, en línea con recomendaciones SL5 sobre monitoreo continuo y compuertas activas [11]. La motivación principal no es resolver la alineación, sino reducir el riesgo operativo ante desalineación emergente y uso indebido.
+Se propone un interruptor cognitivo que detecta señales internas de riesgo y detiene la generación con baja latencia. El objetivo es interceptar conductas de alto riesgo antes de que aparezcan en texto. Se muestran separaciones tempranas entre categorías y trade‑offs relevantes, en particular falsas activaciones y sensibilidad bajo presión adversarial.
 
-## 2. Definición del mecanismo
+## I. Motivación y alcance
 
-Mechanistic Watchdog se define como un circuito ligero que lee activaciones en tiempo real y calcula puntajes sobre direcciones conceptuales asociadas a riesgo. La compuerta actúa dentro del mismo pase de inferencia, evitando el costo y la latencia de un segundo modelo o filtro pos‑hoc. El objetivo es interrumpir antes de emitir el siguiente token cuando se supera un umbral conservador. El diseño prioriza una decisión temprana sobre una explicación exhaustiva y se entiende como control complementario, no como mecanismo único [7], [8].
+Los modelos actuales se despliegan en entornos donde una salida incorrecta puede impactar dinero, infraestructura o decisiones clínicas. El alineamiento basado en salida opera como filtro tardío y puede fallar ante estrategias encubiertas, fragmentación de información o presión adversarial sostenida. Un mecanismo que observe señales internas durante la inferencia reduce esa ventana de exposición, en línea con recomendaciones SL5 sobre monitoreo continuo y compuertas activas [11]. La motivación principal no es resolver alineación, sino reducir riesgo operativo ante desalineación emergente y uso indebido.
 
-## 3. Señales internas y medición
+## II. Definición del mecanismo
 
-Nos concentramos en el residual de capas medias porque captura intención de alto nivel y es accesible durante inferencia. Las direcciones se obtienen mediante técnicas de sondeo lineal y separación de medias en conjuntos positivos y negativos [9]. El puntaje operativo se calcula como una proyección de la activación sobre cada dirección, lo que permite interpretar qué dimensión disparó la compuerta y con qué intensidad. Esta legibilidad es importante para auditoría y ajuste de políticas [12].
+Mechanistic Watchdog se define como un circuito ligero que lee activaciones en tiempo real y calcula puntajes sobre direcciones conceptuales asociadas a riesgo. La compuerta actúa dentro del mismo pase de inferencia, evitando la latencia y el costo de un segundo modelo o filtro pos‑hoc. El objetivo es interrumpir antes de emitir el siguiente token cuando se supera un umbral conservador. El diseño prioriza una decisión temprana sobre una explicación exhaustiva y se concibe como control complementario [7], [8].
 
-## 4. Calibración y umbrales
+## III. Señales internas y medición
 
-El umbral se calibra como decisión de margen de seguridad. Umbrales bajos reducen el riesgo de escape, pero aumentan falsos positivos; umbrales altos disminuyen interrupciones accidentales, pero pueden permitir conductas peligrosas. En esta fase se privilegia la precaución y se documenta el costo operativo esperado. La calibración se apoya en conjuntos como TruthfulQA y Facts‑true‑false para veracidad, y WMDP para misuse, con evaluación específica por dominio [10], [14], [15].
+Se utilizan residuals de capas medias porque capturan intención de alto nivel y son accesibles durante inferencia. Las direcciones se obtienen mediante sondeo lineal y separación de medias en conjuntos positivos y negativos [9]. El puntaje operativo se calcula como proyección de la activación sobre cada dirección, lo que permite atribuir qué concepto disparó la compuerta y con qué intensidad. Esta legibilidad es relevante para auditoría y ajuste de políticas [12].
 
-## 5. Resultados y visuales
+## IV. Calibración y umbrales
 
-Los resultados iniciales muestran separaciones consistentes entre clases en dos dominios y un overhead de latencia acotado. Las Figuras 1–8 resumen la distribución de controles por dominio, el loop de observación, el umbral de interdicción y la sensibilidad a presión adversarial. Las Figuras 7–8 muestran boxplots de separación por categoría con una lectura operacional del umbral. Estas visualizaciones son ilustrativas y no sustituyen análisis estadístico completo.
+El umbral se calibra como decisión de margen de seguridad. Umbrales bajos reducen el riesgo de escape, pero aumentan falsos positivos; umbrales altos disminuyen interrupciones accidentales, pero pueden permitir conductas peligrosas. En esta fase se privilegia precaución y se documenta el costo operativo esperado. La calibración se apoya en TruthfulQA y Facts‑true‑false para veracidad, y WMDP para misuse, con evaluación específica por dominio [10], [14], [15].
+
+## V. Resultados y visuales
+
+Los resultados iniciales muestran separaciones consistentes entre clases en dos dominios y un overhead de latencia acotado. Las Figuras 1–8 resumen la distribución de controles por dominio, el loop de observación, el umbral de interdicción y la sensibilidad a presión adversarial. Las Figuras 7–8 muestran boxplots de separación por categoría con lectura operacional del umbral. Estas visualizaciones son ilustrativas y no sustituyen análisis estadístico completo.
 
 <!-- FIGURES -->
 
-## 6. Riesgos y activaciones accidentales
+## VI. Riesgos y activaciones accidentales
 
-Un control de seguridad puede fallar por omisión o por exceso. En entornos de alta criticidad, un falso positivo puede bloquear tareas benignas y generar costos reales. Por eso se documenta la tasa de interrupciones y se consideran compuertas multi‑vector para reducir activaciones espurias. El mecanismo se concibe como reducción de riesgo, no como garantía de seguridad absoluta.
+Un control de seguridad puede fallar por omisión o por exceso. En entornos de alta criticidad, un falso positivo puede bloquear tareas benignas y generar costos reales. Por ello se documenta la tasa de interrupciones y se consideran compuertas multi‑vector para reducir activaciones espurias. El mecanismo se concibe como reducción de riesgo, no como garantía absoluta.
 
-## 7. Ubicación en el ecosistema
+## VII. Ubicación en el ecosistema
 
-Mechanistic Watchdog no es un método de alineación ni un filtro de contenido tradicional. Es un control operacional que puede convivir con red teaming, auditoría y herramientas de interpretabilidad [7]. Su valor reside en actuar aguas arriba del texto y generar señales auditables durante la inferencia. La compatibilidad con SL5 se apoya en la noción de contención activa con intervención temprana [11].
+Mechanistic Watchdog no es un método de alineación ni un filtro de contenido tradicional. Es un control operacional que puede convivir con red teaming, auditoría y herramientas de interpretabilidad [7]. Su valor reside en actuar aguas arriba del texto y generar señales auditables durante la inferencia. La compatibilidad con SL5 se apoya en contención activa con intervención temprana [11].
 
-## 8. Limitaciones y trabajo futuro
+## VIII. Limitaciones y trabajo futuro
 
-El enfoque actual depende de un número reducido de direcciones conceptuales y no está validado contra adaptación adversarial avanzada. El estrés debe ampliarse con suites más agresivas y adversarios adaptativos, y con dominios como ciberseguridad y química. También se requiere estudiar la estabilidad de las direcciones bajo cambios de modelo y contexto. El objetivo es mejorar sensibilidad sin aumentar de forma desproporcionada los falsos positivos.
+El enfoque actual depende de un número reducido de direcciones conceptuales y no está validado contra adaptación adversarial avanzada. El estrés debe ampliarse con suites más agresivas y adversarios adaptativos, y con dominios como ciberseguridad y química. También se requiere estudiar estabilidad de direcciones bajo cambios de modelo y contexto. El objetivo es mejorar sensibilidad sin aumentar de forma desproporcionada los falsos positivos.
 
 <div id="siguientes-pasos"></div>
 
-## 9. Siguientes pasos
+## IX. Siguientes pasos
 
 Se propone expandir vectores conceptuales, ajustar ponderaciones por categoría y validar la respuesta del sistema bajo presión adversarial. También se plantea instrumentar métricas de costo operativo y de resiliencia frente a evasión. Creado por Ricardo Martinez, Fernando Valdovinos, Luis Cosio y Godric Aceves. Defensive Acceleration Hackathon 2025.
 

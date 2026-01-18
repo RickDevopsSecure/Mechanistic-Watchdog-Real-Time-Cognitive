@@ -1,50 +1,54 @@
 <div id="texto-principal"></div>
 
-## Abstract
+## Abstract—
 
-Mechanistic Watchdog is a real‑time safety layer that monitors a language model’s internal activations and can interrupt generation before harmful content appears. The approach relies on interpretable internal signals and an active gate aligned with SL5 guidance to reduce risk in high‑stakes deployments. We present an operational formulation, calibration choices, and early results that motivate its use as a preventive control rather than a replacement for policy or human oversight.
+Mechanistic Watchdog is a real‑time safety layer that monitors a language model’s internal activations and can interrupt generation before harmful content appears. The approach relies on interpretable internal signals and an active gate aligned with SL5 guidance to reduce risk in high‑stakes deployments. We present an operational formulation, calibration decisions, and early results that motivate its use as a preventive control rather than a replacement for policy or human oversight.
 
-## TL;DR
+## Index Terms—
+
+cognitive interdiction; internal monitoring; SL5; residual activations; active gating.
+
+## TL;DR—
 
 We propose a cognitive kill switch that detects internal risk signals and stops generation with low latency. The goal is to intercept high‑risk behavior before it appears in text. We show early separation across categories and discuss tradeoffs such as accidental triggers and sensitivity under adversarial pressure.
 
-## 1. Motivation and stakes
+## I. Motivation and Stakes
 
-Modern LLMs are deployed in settings where output errors can affect money, infrastructure, or clinical decisions. Output‑level alignment is a late filter and can fail under covert strategies, fragmentation, or sustained adversarial pressure. A mechanism that observes internal signals during inference can reduce the exposure window, consistent with SL5 guidance on continuous monitoring and active gating [11]. The goal is not to solve alignment, but to reduce operational risk under emergent misalignment and misuse.
+Modern LLMs are deployed in settings where output errors can affect money, infrastructure, or clinical decisions. Output‑level alignment is a late filter and can fail under covert strategies, fragmentation, or sustained adversarial pressure. A mechanism that observes internal signals during inference reduces that exposure window, consistent with SL5 guidance on continuous monitoring and active gating [11]. The goal is not to solve alignment, but to reduce operational risk under emergent misalignment and misuse.
 
-## 2. Mechanism definition
+## II. Mechanism Definition
 
 Mechanistic Watchdog is defined as a lightweight circuit that reads activations in real time and computes scores over risk‑relevant conceptual directions. The gate acts within the same forward pass, avoiding the latency and cost of a second model or post‑hoc filter. The intent is to interrupt before the next token is emitted once a conservative threshold is crossed. The design prioritizes early intervention over exhaustive explanation and is framed as a complementary control [7], [8].
 
-## 3. Internal signals and measurement
+## III. Internal Signals and Measurement
 
 We focus on mid‑layer residual streams because they capture high‑level intent and are accessible at inference time. Directions are obtained via linear probing and mean‑difference separation on positive and negative sets [9]. The operational score is a projection onto each direction, enabling attribution of which concept fired and how strongly. This legibility is important for audit and policy tuning [12].
 
-## 4. Calibration and thresholds
+## IV. Calibration and Thresholds
 
-Thresholds are calibrated as safety‑margin decisions. Lower thresholds reduce escape risk but increase false positives; higher thresholds reduce interruptions but can miss harmful behavior. This phase favors caution and documents expected operational cost. Calibration uses datasets such as TruthfulQA and Facts‑true‑false for truthfulness and WMDP for misuse, with domain‑specific evaluation [10], [14], [15].
+Thresholds are calibrated as safety‑margin decisions. Lower thresholds reduce escape risk but increase false positives; higher thresholds reduce interruptions but can miss harmful behavior. This phase favors caution and documents expected operational cost. Calibration uses TruthfulQA and Facts‑true‑false for truthfulness and WMDP for misuse, with domain‑specific evaluation [10], [14], [15].
 
-## 5. Results and visuals
+## V. Results and Visuals
 
 Early results show consistent separation between classes across two domains and bounded latency overhead. Figures 1–8 summarize domain control distribution, the observation loop, the interdiction threshold, and sensitivity under adversarial pressure. Figures 7–8 provide boxplots of category separation with an operational reading of the threshold. These figures are illustrative and do not replace full statistical analysis.
 
 <!-- FIGURES -->
 
-## 6. Risks and accidental triggers
+## VI. Risks and Accidental Triggers
 
 A safety control can fail by omission or by excess. In high‑stakes settings, a false positive can block benign tasks and cause real costs. We therefore track interruption rates and consider multi‑vector gating to reduce spurious activations. The mechanism is framed as risk reduction, not as a perfect guardian.
 
-## 7. Position in the safety ecosystem
+## VII. Position in the Safety Ecosystem
 
 Mechanistic Watchdog is not an alignment method, a content filter, or a full audit. It is an operational control that can run in deployment alongside red teaming, auditing, and interpretability tools [7]. Its value is acting upstream of text and emitting auditable signals during inference. The SL5 tie‑in is the expectation of active containment with early intervention [11].
 
-## 8. Limitations and future work
+## VIII. Limitations and Future Work
 
 The current approach depends on a small set of conceptual directions and is not validated against advanced adaptive adversaries. Stress tests should expand to stronger jailbreak suites and adaptive opponents, and to domains such as cyber and chemistry. Direction stability across models and contexts also remains open. The goal is to improve sensitivity without disproportionate false positives.
 
 <div id="siguientes-pasos"></div>
 
-## 9. Next steps
+## IX. Next Steps
 
 We propose expanding conceptual vectors, adjusting category weights, and validating performance under adversarial pressure. We also plan to instrument operational‑cost metrics and resilience to evasion. Created by Ricardo Martinez, Fernando Valdovinos, Luis Cosio, and Godric Aceves. Defensive Acceleration Hackathon 2025.
 
