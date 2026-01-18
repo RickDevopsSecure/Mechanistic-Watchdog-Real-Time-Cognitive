@@ -48,10 +48,6 @@ export default async function NotePage({ lang }: NotePageProps) {
         statResidualNote: "Higher on factuals, lower on covert routes.",
         statPressure: "Stress pressure (relative)",
         statPressureNote: "Relative increase under adversarial suites.",
-        notesTitle: "Researcher notes",
-        notesBody:
-          "These notes accompany the reading as a record of operating assumptions and limits observed in internal review. The priority is to preserve traceability of threshold decisions, omitted signals, and evaluation dependencies that can bias security interpretation.",
-        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio · Godric Aceves",
         footerLine1:
           "Editorial record reserved for internal circulation. The published version may vary with framework or terminology changes.",
         footerLine2:
@@ -75,10 +71,6 @@ export default async function NotePage({ lang }: NotePageProps) {
         statResidualNote: "Mayor en fácticos, menor en rutas encubiertas.",
         statPressure: "Presión de estrés (relativa)",
         statPressureNote: "Incremento relativo bajo suites adversariales.",
-        notesTitle: "Notas del investigador",
-        notesBody:
-          "Estas notas acompañan la lectura como registro de supuestos operativos y límites observados en revisión interna. La prioridad es mantener trazabilidad de decisiones de umbral, señales omitidas y dependencias de evaluación que pueden sesgar la interpretación de seguridad.",
-        notesSignature: "Ricardo Martinez · Fernando Valdovinos · Luis Cosio · Godric Aceves",
         footerLine1:
           "Registro editorial reservado para circulación interna. La versión publicada puede variar según cambios de marco o terminología.",
         footerLine2:
@@ -139,11 +131,6 @@ export default async function NotePage({ lang }: NotePageProps) {
           <SignalsPanel lang={lang} />
         </section>
         <article className="markdown" dangerouslySetInnerHTML={{ __html: htmlBottom }} />
-        <section className="research-notes">
-          <h2>{t.notesTitle}</h2>
-          <p>{t.notesBody}</p>
-          <p className="note-signature">{t.notesSignature}</p>
-        </section>
         <footer className="article-footer">
           <p>{t.footerLine1}</p>
           <p>{t.footerLine2}</p>
