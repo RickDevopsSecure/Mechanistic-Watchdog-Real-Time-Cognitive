@@ -242,13 +242,13 @@ h1 {
 }
 
 .markdown h2 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--soft);
-  margin-top: 56px;
+  font-size: 1.25rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-top: 48px;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .markdown h3 {
@@ -261,7 +261,7 @@ h1 {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 54px;
+  width: 72px;
   height: 1px;
   background: var(--rule);
 }
@@ -451,12 +451,12 @@ h1 {
 
 .chart-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
 .chart-card {
-  padding: 18px;
+  padding: 22px;
   border-radius: 18px;
   border: 1px solid var(--rule);
   background: #fffdf8;

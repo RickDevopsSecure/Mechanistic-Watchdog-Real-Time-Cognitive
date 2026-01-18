@@ -380,6 +380,7 @@ function drawBoxplot(
 }
 
 export default function SignalsPanel({ lang }: { lang: Lang }) {
+  const figureLabel = lang === "en" ? "Figure" : "Figura";
   const copy = lang === "en"
     ? {
         sl5: {
@@ -517,7 +518,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
             note: copy.sl5.note,
           })}
         />
-        <h3>{copy.sl5.title}</h3>
+        <h3>{`${figureLabel} 1. ${copy.sl5.title}`}</h3>
         <p>{copy.sl5.note}</p>
       </div>
       <div className="chart-card">
@@ -529,7 +530,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
             note: copy.loop.note,
           })}
         />
-        <h3>{copy.loop.title}</h3>
+        <h3>{`${figureLabel} 2. ${copy.loop.title}`}</h3>
         <p>{copy.loop.note}</p>
       </div>
       <div className="chart-card">
@@ -537,7 +538,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
           ariaLabel={copy.threshold.title}
           draw={(svg) => drawThresholdChart(svg, copy.threshold)}
         />
-        <h3>{copy.threshold.title}</h3>
+        <h3>{`${figureLabel} 3. ${copy.threshold.title}`}</h3>
         <p>{copy.threshold.note}</p>
       </div>
       <div className="chart-card">
@@ -549,7 +550,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
             note: copy.residual.note,
           })}
         />
-        <h3>{copy.residual.title}</h3>
+        <h3>{`${figureLabel} 4. ${copy.residual.title}`}</h3>
         <p>{copy.residual.note}</p>
       </div>
       <div className="chart-card">
@@ -562,7 +563,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
             accentLast: true,
           })}
         />
-        <h3>{copy.vectors.title}</h3>
+        <h3>{`${figureLabel} 5. ${copy.vectors.title}`}</h3>
         <p>{copy.vectors.note}</p>
       </div>
       <div className="chart-card">
@@ -574,7 +575,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
             note: copy.pressure.note,
           })}
         />
-        <h3>{copy.pressure.title}</h3>
+        <h3>{`${figureLabel} 6. ${copy.pressure.title}`}</h3>
         <p>{copy.pressure.note}</p>
       </div>
       <div className="chart-card">
@@ -583,7 +584,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
           height={620}
           draw={(svg) => drawBoxplot(svg, copy.truth.kicker, copy.truth.title, copy.truth.subtitle, copy.truth.labels, truthStats, copy.truth.note)}
         />
-        <h3>{copy.truth.title}</h3>
+        <h3>{`${figureLabel} 7. ${copy.truth.title}`}</h3>
         <p>{copy.truth.note}</p>
       </div>
       <div className="chart-card">
@@ -592,7 +593,7 @@ export default function SignalsPanel({ lang }: { lang: Lang }) {
           height={620}
           draw={(svg) => drawBoxplot(svg, copy.bio.kicker, copy.bio.title, copy.bio.subtitle, copy.bio.labels, bioStats, copy.bio.note)}
         />
-        <h3>{copy.bio.title}</h3>
+        <h3>{`${figureLabel} 8. ${copy.bio.title}`}</h3>
         <p>{copy.bio.note}</p>
       </div>
     </div>

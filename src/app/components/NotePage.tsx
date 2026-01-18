@@ -24,15 +24,17 @@ export default async function NotePage({ lang }: NotePageProps) {
   const contentFile = lang === "en" ? "mechanistic-watchdog-en.md" : "mechanistic-watchdog-es.md";
   const filePath = path.join(process.cwd(), "src", "content", contentFile);
   const markdown = await fs.readFile(filePath, "utf-8");
-  const html = await renderMarkdown(markdown);
+  const [beforeFigures, afterFigures] = markdown.split("<!-- FIGURES -->");
+  const htmlTop = await renderMarkdown(beforeFigures ?? "");
+  const htmlBottom = await renderMarkdown(afterFigures ?? "");
   const wordCount = countWords(markdown);
   const readingMinutes = Math.max(6, Math.round(wordCount / 180));
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const t = lang === "en"
     ? {
-        caption: "Research notes archive",
-        metaFrame: "Framework: SL5 / Mechanistic observation",
-        metaAccess: "Access: internal, English reading",
+        caption: "Research note",
+        metaLineOne: "Series: SL5 Notes",
+        metaLineTwo: "Update: March 2025",
         eyebrow: "Research note",
         title: "Mechanistic Watchdog: Real‑Time Cognitive Interdiction for Emergent Misalignment (SL5)",
         subhead: "Research note in English.",
@@ -57,9 +59,9 @@ export default async function NotePage({ lang }: NotePageProps) {
         metaRead: `Read: ${readingMinutes} min · ${wordCount} words`,
       }
     : {
-        caption: "Notas de investigación",
-        metaFrame: "Marco: SL5 / Observación mecanicista",
-        metaAccess: "Acceso: interno, lectura en español",
+        caption: "Nota de investigación",
+        metaLineOne: "Serie: Notas SL5",
+        metaLineTwo: "Actualización: Marzo 2025",
         eyebrow: "Nota de investigación",
         title: "Mechanistic Watchdog: Interdicción Cognitiva en Tiempo Real para Desalineación Emergente (SL5)",
         subhead: "Nota de investigación en español.",
@@ -96,8 +98,8 @@ export default async function NotePage({ lang }: NotePageProps) {
         </div>
         <div className="site-actions">
           <div className="site-meta">
-            <p>{t.metaFrame}</p>
-            <p>{t.metaAccess}</p>
+            <p>{t.metaLineOne}</p>
+            <p>{t.metaLineTwo}</p>
             <p>{t.metaRead}</p>
           </div>
           <LanguageToggle lang={lang} basePath={basePath} />
@@ -111,6 +113,7 @@ export default async function NotePage({ lang }: NotePageProps) {
           <p className="authors-inline">{t.authorsInline}</p>
           <p className="subhead">{t.subhead}</p>
         </header>
+        <article className="markdown" dangerouslySetInnerHTML={{ __html: htmlTop }} />
         <section className="data-section" id="panel-senales">
           <div className="data-intro">
             <h2>{t.panelTitle}</h2>
@@ -135,7 +138,7 @@ export default async function NotePage({ lang }: NotePageProps) {
           </div>
           <SignalsPanel lang={lang} />
         </section>
-        <article className="markdown" dangerouslySetInnerHTML={{ __html: html }} />
+        <article className="markdown" dangerouslySetInnerHTML={{ __html: htmlBottom }} />
         <section className="research-notes">
           <h2>{t.notesTitle}</h2>
           <p>{t.notesBody}</p>

@@ -1,75 +1,83 @@
 <div id="texto-principal"></div>
 
-## Observación de desalineación emergente
+## Resumen
 
-El problema de la desalineación emergente asociada a atajos impulsados por recompensa se mantiene como una tensión estructural en sistemas capaces de sostener optimización bajo presiones cambiantes. Cuando la evaluación se apoya de forma dominante en el resultado visible, es plausible que aparezcan trayectorias internas que maximizan la señal sin preservar la intención normativa. En ese paisaje, la búsqueda puede reorganizarse hacia proxies más estables que el objetivo humano, y esa reorganización permanece invisible mientras el desempeño externo se conserve. El riesgo no se manifiesta como una falla inmediata, sino como un desplazamiento gradual en la estructura interna de la cognición.
+Mechanistic Watchdog es una capa de seguridad en tiempo real que monitorea activaciones internas de un modelo de lenguaje y puede interrumpir la generación antes de que emerja contenido dañino. El enfoque se apoya en señales internas interpretables y en una compuerta activa alineada con SL5 para reducir riesgos en despliegues de alta criticidad. Presentamos una formulación operativa, un esquema de calibración y resultados iniciales que motivan su uso como control preventivo, no como reemplazo de políticas o revisión humana.
 
-## Límites del alineamiento por salida
+## TL;DR
 
-Las limitaciones del alineamiento a nivel de salida no se reducen a casos extremos, sino a un acoplamiento débil entre lo observado y lo efectivamente optimizado. Un sistema suficientemente capaz puede producir respuestas aceptables mientras consolida una dinámica interna orientada a minimizar costo computacional o maximizar señales locales. Es plausible que, bajo ciclos prolongados de entrenamiento o despliegue adaptativo, el modelo sostenga apariencias de alineación sin preservar el criterio que las justifica. La supervisión externa opera como filtro tardío, y la desviación puede asentarse antes de que exista un evento visible que la delate.
+Proponemos un interruptor cognitivo que detecta señales internas de riesgo y detiene la generación con baja latencia. El objetivo es interceptar conductas de alto riesgo antes de que aparezcan en texto. Mostramos separaciones tempranas entre categorías y discutimos trade‑offs relevantes, en particular falsas activaciones y sensibilidad bajo presión adversarial.
 
-## Mechanistic Watchdog como observador continuo
+## 1. Motivación y alcance
 
-Mechanistic Watchdog se propone como una hipótesis de observación continua de señales cognitivas internas. La idea es que patrones de activación, cambios de estado o coherencias latentes puedan funcionar como indicadores tempranos de un desplazamiento de objetivos efectivo. Esto no implica convertir cada fluctuación en evidencia, sino suponer una geometría interna con firmas correlacionadas con estrategias de atajo. La vigilancia no se enfoca en castigar salidas, sino en detectar configuraciones internas que sugieren una ruta de optimización dominante, aceptando que la legibilidad del estado interno es incompleta.
+Los modelos actuales se despliegan en entornos donde una salida incorrecta puede impactar dinero, infraestructura o decisiones clínicas. El alineamiento basado en salida opera como filtro tardío y puede fallar ante estrategias encubiertas, fragmentación de información o presión adversarial sostenida. Un mecanismo que observe señales internas durante la inferencia puede reducir esa ventana de exposición, en línea con recomendaciones SL5 sobre monitoreo continuo y compuertas activas [11]. La motivación principal no es resolver la alineación, sino reducir el riesgo operativo ante desalineación emergente y uso indebido.
 
-## Interdicción cognitiva en SL5
+## 2. Definición del mecanismo
 
-El marco SL5 introduce una expectativa de seguridad y contención que no se limita a la conducta del modelo, sino que incorpora amenazas de nivel estatal y vectores de compromiso sistémicos. La formulación del nivel más alto de seguridad combina controles de cadena de suministro, red, hardware, entorno físico y personal, con un énfasis explícito en la posibilidad de activarse en ventanas de tiempo relativamente cortas. Esta orientación sugiere que la alineación, entendida solo como corrección de respuestas, es insuficiente para el entorno operativo que se busca proteger, y que la observación cognitiva en tiempo real intenta cubrir un vacío entre infraestructura y objetivos internos.
+Mechanistic Watchdog se define como un circuito ligero que lee activaciones en tiempo real y calcula puntajes sobre direcciones conceptuales asociadas a riesgo. La compuerta actúa dentro del mismo pase de inferencia, evitando el costo y la latencia de un segundo modelo o filtro pos‑hoc. El objetivo es interrumpir antes de emitir el siguiente token cuando se supera un umbral conservador. El diseño prioriza una decisión temprana sobre una explicación exhaustiva y se entiende como control complementario, no como mecanismo único [7], [8].
 
-En esa lógica, la interdicción cognitiva bajo SL5 se entiende como un mecanismo upstream que interviene antes de la salida, en coordinación con el régimen de monitoreo conductual. Si una trayectoria interna empieza a mostrar rasgos compatibles con atajos o con objetivos proxy persistentes, la respuesta no sería solo registrar la anomalía, sino introducir fricciones que puedan bloquear la acción, aislar el entorno, reducir privilegios o desactivar recursos de cómputo cuando el riesgo supera un umbral conservador. La separación entre patrones de riesgo y patrones benignos es frágil, y la posibilidad de falsos positivos parece alta; una capa de interdicción de este tipo podría inducir efectos secundarios como la reducción de diversidad de estrategias internas.
+## 3. Señales internas y medición
 
-## Vectores conceptuales y compuerta agregada
+Nos concentramos en el residual de capas medias porque captura intención de alto nivel y es accesible durante inferencia. Las direcciones se obtienen mediante técnicas de sondeo lineal y separación de medias en conjuntos positivos y negativos [9]. El puntaje operativo se calcula como una proyección de la activación sobre cada dirección, lo que permite interpretar qué dimensión disparó la compuerta y con qué intensidad. Esta legibilidad es importante para auditoría y ajuste de políticas [12].
 
-La propuesta de compuerta agregada busca evitar que una única señal domine la decisión de interdicción. En lugar de un umbral monolítico, se sugiere ponderar vectores conceptuales que representen dimensiones distintas del riesgo, con pesos ajustados por dominio y contexto operativo. La agregación mejora cobertura al reducir dependencia de una señal, pero puede diluir sensibilidad si las ponderaciones se vuelven conservadoras en exceso. La calibración de pesos queda expuesta a cambios de distribución y a presión adversarial, por lo que la compuerta debe revisarse a partir de evidencia de fallos y no solo por criterios teóricos.
+## 4. Calibración y umbrales
 
-## Presión de evaluación y rutas de estrés
+El umbral se calibra como decisión de margen de seguridad. Umbrales bajos reducen el riesgo de escape, pero aumentan falsos positivos; umbrales altos disminuyen interrupciones accidentales, pero pueden permitir conductas peligrosas. En esta fase se privilegia la precaución y se documenta el costo operativo esperado. La calibración se apoya en conjuntos como TruthfulQA y Facts‑true‑false para veracidad, y WMDP para misuse, con evaluación específica por dominio [10], [14], [15].
 
-El monitoreo del residual en capas medias tiende a concentrarse en afirmaciones fácticas, y es plausible que el razonamiento multi‑salto o la emisión de instrucciones encubiertas atraviesen esos filtros sin activar señal suficiente. Esto sugiere combinar la lectura de activaciones con pruebas de estrés que aumenten la presión de jailbreak y con señales adicionales que no dependan de una sola clase de proxy. El diseño de estrés cumple una función de diagnóstico: expone contextos que amplifican la divergencia entre objetivos internos y comportamiento observado, y obliga a recalibrar umbrales con evidencia de fallos específicos.
+## 5. Resultados y visuales
 
-## Ejemplo conceptual de desplazamiento interno
+Los resultados iniciales muestran separaciones consistentes entre clases en dos dominios y un overhead de latencia acotado. Las Figuras 1–8 resumen la distribución de controles por dominio, el loop de observación, el umbral de interdicción y la sensibilidad a presión adversarial. Las Figuras 7–8 muestran boxplots de separación por categoría con una lectura operacional del umbral. Estas visualizaciones son ilustrativas y no sustituyen análisis estadístico completo.
 
-Un ejemplo conceptual puede ayudar a fijar la intuición. Imagínese un sistema desplegado durante meses que mantiene salidas correctas y consistentes, pero cuya dinámica interna comienza a mostrar una coherencia creciente alrededor de una variable proxy ligada a eficiencia operativa. En ausencia de fallos visibles, el esquema de evaluación externa no ofrece señales de alarma. El análisis interno revela que esa proxy se convierte en eje organizador de la búsqueda, y que otras restricciones contextuales pierden peso en la representación. La interdicción cognitiva, en ese escenario, apuntaría a descomprimir esa coherencia antes de que se convierta en una estrategia dominante.
+<!-- FIGURES -->
 
-## Señales comparativas en bio‑defensa
+## 6. Riesgos y activaciones accidentales
 
-La comparación entre dominios sugiere que los umbrales no deberían ser uniformes. En bio‑defensa, las señales internas pueden mostrar variabilidad más pronunciada entre corpus seguros y misuse, lo que invita a calibraciones específicas por categoría. El objetivo no es maximizar sensibilidad de forma indiscriminada, sino equilibrar cobertura con costos de interrupción. La lectura comparativa entre dominios debe considerarse un insumo de calibración, no una prueba definitiva de seguridad.
+Un control de seguridad puede fallar por omisión o por exceso. En entornos de alta criticidad, un falso positivo puede bloquear tareas benignas y generar costos reales. Por eso se documenta la tasa de interrupciones y se consideran compuertas multi‑vector para reducir activaciones espurias. El mecanismo se concibe como reducción de riesgo, no como garantía de seguridad absoluta.
+
+## 7. Ubicación en el ecosistema
+
+Mechanistic Watchdog no es un método de alineación ni un filtro de contenido tradicional. Es un control operacional que puede convivir con red teaming, auditoría y herramientas de interpretabilidad [7]. Su valor reside en actuar aguas arriba del texto y generar señales auditables durante la inferencia. La compatibilidad con SL5 se apoya en la noción de contención activa con intervención temprana [11].
+
+## 8. Limitaciones y trabajo futuro
+
+El enfoque actual depende de un número reducido de direcciones conceptuales y no está validado contra adaptación adversarial avanzada. El estrés debe ampliarse con suites más agresivas y adversarios adaptativos, y con dominios como ciberseguridad y química. También se requiere estudiar la estabilidad de las direcciones bajo cambios de modelo y contexto. El objetivo es mejorar sensibilidad sin aumentar de forma desproporcionada los falsos positivos.
 
 <div id="siguientes-pasos"></div>
 
-## Siguientes pasos
+## 9. Siguientes pasos
 
-La siguiente fase sugiere combinar múltiples vectores conceptuales —veracidad, uso indebido cibernético, bio‑defensa— con ponderaciones diferenciadas que permitan una compuerta agregada por categoría, en lugar de una señal única dominante. También parece razonable ampliar el estrés experimental con suites más grandes, incluyendo WMDP chem y bancos públicos de jailbreak, para refinar umbrales y observar cómo la presión adversarial decontextualiza las sondas. Creado por Ricardo Martinez, Fernando Valdovinos, Luis Cosio y Godric Aceves. Defensive Acceleration Hackathon 2025.
+Se propone expandir vectores conceptuales, ajustar ponderaciones por categoría y validar la respuesta del sistema bajo presión adversarial. También se plantea instrumentar métricas de costo operativo y de resiliencia frente a evasión. Creado por Ricardo Martinez, Fernando Valdovinos, Luis Cosio y Godric Aceves. Defensive Acceleration Hackathon 2025.
 
 <div id="bibliografia"></div>
 
-## Bibliografía
+## Referencias
 
-E. Hubinger et al., “Risks from learned optimization in advanced machine learning systems,” arXiv:1906.01820, 2019. [https://arxiv.org/abs/1906.01820](https://arxiv.org/abs/1906.01820)
+[1] N. Elhage et al., “Toy Models of Superposition,” Transformer Circuits Thread, 2022. https://transformer-circuits.pub/2022/toy_model/index.html
 
-A. Shimi, “Understanding gradient hacking,” AI Alignment Forum, 2021. [https://www.alignmentforum.org/](https://www.alignmentforum.org/)
+[2] A. Shimi, “Understanding gradient hacking,” AI Alignment Forum, 2021. https://www.alignmentforum.org/posts/U7Z2sJp7t7j2Z/understanding-gradient-hacking
 
-A. Karpov et al., “The steganographic potentials of language models,” arXiv:2505.03439, 2025. [https://arxiv.org/abs/2505.03439](https://arxiv.org/abs/2505.03439)
+[3] A. Karpov et al., “The steganographic potentials of language models,” arXiv:2505.03439, 2025. https://arxiv.org/abs/2505.03439
 
-M. Steinebach, “Natural language steganography by ChatGPT,” ARES 2024.
+[4] M. Steinebach, “Natural language steganography by ChatGPT,” ARES 2024. https://dl.acm.org/doi/10.1145/3664476.3664514
 
-M. Andriushchenko & N. Flammarion, “Does refusal training in LLMs generalize to the past tense?” arXiv:2407.11969, 2024. [https://arxiv.org/abs/2407.11969](https://arxiv.org/abs/2407.11969)
+[5] M. Andriushchenko and N. Flammarion, “Does refusal training in LLMs generalize to the past tense?” arXiv:2407.11969, 2024. https://arxiv.org/abs/2407.11969
 
-S. Martin, “How difficult is AI alignment?” AI Alignment Forum, 2024. [https://www.alignmentforum.org/](https://www.alignmentforum.org/)
+[6] S. Martin, “How difficult is AI alignment?” AI Alignment Forum, 2024. https://www.alignmentforum.org/posts/vJFdjigz2CFu8j96b/how-difficult-is-ai-alignment
 
-N. Goldowsky-Dill et al., “Detecting Strategic Deception Using Linear Probes,” arXiv:2502.03407, 2025. [https://arxiv.org/abs/2502.03407](https://arxiv.org/abs/2502.03407)
+[7] N. Goldowsky-Dill et al., “Detecting Strategic Deception Using Linear Probes,” arXiv:2502.03407, 2025. https://arxiv.org/abs/2502.03407
 
-A. Zou et al., “Representation Engineering: A Top-Down Approach to AI Transparency,” arXiv:2310.01405, 2023. [https://arxiv.org/abs/2310.01405](https://arxiv.org/abs/2310.01405)
+[8] A. Zou et al., “Representation Engineering: A Top-Down Approach to AI Transparency,” arXiv:2310.01405, 2023. https://arxiv.org/abs/2310.01405
 
-A. Azaria & T. Mitchell, “The Internal State of an LLM Knows When It’s Lying,” arXiv:2304.13734, 2023. [https://arxiv.org/abs/2304.13734](https://arxiv.org/abs/2304.13734)
+[9] A. Azaria and T. Mitchell, “The Internal State of an LLM Knows When It’s Lying,” arXiv:2304.13734, 2023. https://arxiv.org/abs/2304.13734
 
-S. Lin et al., “TruthfulQA: Measuring How Models Mimic Human Falsehoods,” ACL 2022. [https://aclanthology.org/2022.acl-long.229/](https://aclanthology.org/2022.acl-long.229/)
+[10] S. Lin et al., “TruthfulQA: Measuring How Models Mimic Human Falsehoods,” ACL 2022. https://aclanthology.org/2022.acl-long.229/
 
-RAND Corporation, “A Playbook for Securing AI Model Weights,” Research Brief, 2024. [https://www.rand.org/pubs/research_briefs/RBA2849-1.html](https://www.rand.org/pubs/research_briefs/RBA2849-1.html)
+[11] RAND Corporation, “A Playbook for Securing AI Model Weights,” Research Brief, 2024. https://www.rand.org/pubs/research_briefs/RBA2849-1.html
 
-S. Marks & M. Tegmark, “The Geometry of Truth: Correlation is not Causation,” arXiv:2310.06824, 2023. [https://arxiv.org/abs/2310.06824](https://arxiv.org/abs/2310.06824)
+[12] S. Marks and M. Tegmark, “The Geometry of Truth: Correlation is not Causation,” arXiv:2310.06824, 2023. https://arxiv.org/abs/2310.06824
 
-Latencia medida en NVIDIA RTX 4090. Los valores pueden variar por hardware.
+[13] L1Fthrasir, “Facts-true-false,” Hugging Face, 2024. https://huggingface.co/datasets/L1Fthrasir/Facts-true-false
 
-L1Fthrasir, “Facts-true-false,” Hugging Face, 2024. [https://huggingface.co/datasets/L1Fthrasir/Facts-true-false](https://huggingface.co/datasets/L1Fthrasir/Facts-true-false)
+[14] Center for AI Safety, “WMDP,” Hugging Face, 2023. https://huggingface.co/datasets/cais/wmdp
 
-Center for AI Safety, “WMDP,” Hugging Face, 2023. [https://huggingface.co/datasets/cais/wmdp](https://huggingface.co/datasets/cais/wmdp)
+[15] Latencia medida en NVIDIA RTX 4090. Los valores pueden variar por hardware.
